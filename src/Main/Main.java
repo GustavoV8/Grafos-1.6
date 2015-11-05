@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		ManipulaArquivos ler = new ManipulaArquivos();
 		String arquivoDeEntrada = args[0];
-		String arquivoDeSaida = args[1];
+		//String arquivoDeSaida = args[1];
 		
 		try {
 			if(ler.lerArquivo(arquivoDeEntrada)){

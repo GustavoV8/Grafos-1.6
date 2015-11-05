@@ -45,7 +45,7 @@ public class Grafo {
 		 
 		 Stack<Integer> fronteira = new Stack<Integer>();
 		 List<Integer> visitados = new ArrayList<Integer>();
-		 List<Integer> vizinhos = new LinkedList<Integer>();
+		 //List<Integer> vizinhos = new LinkedList<Integer>();
 		 int origem = vertices.get(0).intValue();
 		 int destino = vertices.get(1).intValue();
 		 int aux = origem;
