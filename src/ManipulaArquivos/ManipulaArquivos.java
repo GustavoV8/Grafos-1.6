@@ -15,6 +15,7 @@ public class ManipulaArquivos {
 	private int qtdLinhas;
 	//Vetor responsavel por receber cada linha do arquivo
 	private String[] linhasArquivo;	
+	//Variavel que pega o total de linhas
 	private LineNumberReader linhaLeitura;
 	
 	/**
