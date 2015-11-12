@@ -2,7 +2,9 @@ package Grafo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Grafo {
@@ -116,6 +118,124 @@ public class Grafo {
 			 fronteira.pop();
 		 }
 	 }
+	 
+	 
+	 
+	 
+	 public void buscaEmLargura(List<Integer> vertices1){
+		 
+		 //FILA FRONTEIRA;
+		 Queue <Integer> fronteira = new LinkedList<Integer>();
+		 
+		 //LISTA DE VERTICES VISITADOS;
+		 List<Integer> visitados1 = new ArrayList<Integer>();
+		 
+		 //VARIAVEL COM VERTICE DE ORIGEM;
+		 int origem = vertices1.get(0).intValue();
+		 
+		 //VARIAVEL COM VERTICE DESTINO;
+		 int destino = vertices1.get(1).intValue();
+		
+		 //VARIAVEL AUXILIAR USADA PARA RECEBER O NOVO VERTICE DE ORIGEM;
+		 int aux = origem;
+		 
+		 //EXIBE OS VERTICES DE ORIGEM E DESTINO;
+		 System.out.println("Largura: "+vertices1);
+		 System.out.println(origem);
+		 
+		 int cont = 0;
+		 
+		 //CONDICAO QUE COMPARA A VARIAVEL AUXILIAR (COM A ORIGEM) COM OS VIZINHOS; 
+		 while(aux != destino){
+			 
+			 //LISTA DE VIZINHOS;
+			 List<Integer> vizinhos1 = new ArrayList<Integer>();
+			 
+			 //CONDICAO QUE VERIFICA OS VIZINHOS;
+			 for(int i = 0; i < this.arestas.size();i++)
+			 		{
+				 	if(aux == this.arestas.get(i).getOrigem().getId()){
+					 vizinhos1.add(this.arestas.get(i).getDestino().getId());
+				 	}
+			 }
+			 //ADICIONA A ORIGEM, APOS ENCONTRAR SEUS VIZINHOS;
+			 visitados1.add(aux); 
+			
+			//SE ORDEM DE VIZINHOS (CRESCENTE), INVERTA-OS;
+			 for(int i = 0; i < vizinhos1.size() -1;i++)
+			 	{
+				 	//VERIFICA ORDEM;
+					 if(vizinhos1.get(i).intValue() >= vizinhos1.get(i+1).intValue()){
+					 //EFETUA INVERCAO;
+					 Collections.reverse(vizinhos1);
+				 }
+			 }
+			 
+			 
+			 for(int i = 0; i < vizinhos1.size(); i++){
+				 //FRONTEIRA RECEBE VIZINHOS DA ORIGEM ATUAL;
+				 fronteira.add(vizinhos1.get(i).intValue());
+			 }	
+			 
+			 //VARIAVEL AUXILIAR RECEBE NOVA ORIGEM, ULTIMO ELEMENTO ADICIONADO NA LISTA;
+			 aux = fronteira.element().intValue();
+			 
+			 //VERIFICA SE NOVA ORIGEM ESTA NOS VISITADOS;
+			 for(int i = 0; i < visitados1.size(); i++)
+			 {
+				 if(aux == visitados1.get(i).intValue())
+				 {
+					 System.out.println(fronteira);
+					 //VERTICE JA VISITADO, VERTICE REMOVIDO;
+					   fronteira.remove();
+					 //VARIAVEL AUXILIAR RECEBE NOVA ORIGEM, ULTIMO ELEMENTO ADICIONADO NA LISTA;
+					 aux = fronteira.element().intValue();
+				 }
+			 }
+			 //MOSTRA O RESULTADO DA BUSCA POR LARGURA;
+			  System.out.println(fronteira);
+			
+			 
+			  fronteira.remove();
+		
+				
+			 
+		
+		 }
+		 
+		 
+	 }
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	public List<Vertices> getVertices() {
 		return vertices;

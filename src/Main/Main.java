@@ -30,8 +30,19 @@ public class Main {
 				for(int i = 0; i < resultado.size();i++){
 					grafo.buscaEmProfundidade(resultado.get(i));
 				}
+				//Limpa a lista
+				resultado.clear();
 				
-				//ler.lerProfundidade();
+				
+				//Exibe Largura
+				resultado.addAll(ler.lerLargura());
+				for(int i = 0; i < resultado.size();i++){
+					grafo.buscaEmLargura(resultado.get(i));
+				}
+				//Limpa a lista
+				resultado.clear();
+				
+				
 			}	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
