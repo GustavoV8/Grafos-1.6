@@ -184,7 +184,7 @@ public class ManipulaArquivos {
 			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0, 3);
-			//Confere se o primeiro caracter e 'D' de DISTANCIA
+			//Confere se o inicio da palavra começa com 'DIS' ou 'dis' de DISTANCIA
 			if(valores.equals("DIS") || valores.equals("dis")){
 				//Para cada comando de DISTANCIA instancia uma nova lista de vertices
 				List<Integer> vertices = new ArrayList<Integer>();
@@ -206,24 +206,33 @@ public class ManipulaArquivos {
 		return distancia;
 	}
 	
-	public List<Integer> lerProfundidade(){
-		List<Integer> profundidade = new ArrayList<Integer>();
+	public List<List<Integer>> lerProfundidade(){
 		
+		//Lista de lista de valores inteiros que sao os vertices
+		List<List<Integer>> profundidade = new ArrayList<List<Integer>>();
+		
+		//For responsavel por ler as linhas do arquivo
 		for(int i = 0; i < linhasArquivo.length-1;i++){
-			
+			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0,3);
-			
+			//Confere se o inicio da palavra começa com 'PRO' ou 'pro' de PROFUNDIDADE
 			if(valores.equals("PRO") || valores.equals("pro")){
+				//Para cada comando de PROFUNDIDADE instancia uma nova lista de vertices
+				List<Integer> vertices = new ArrayList<Integer>();
 				//Manipula a linha do arquivo pegando apenas os vertices
 				valores = linha.substring(13);
 				String[] ajuda = valores.split(";");
 				ajuda = ajuda[0].split(" ");
-			
+			    
+				//For responsavel por converter String para Integer e depois insere na lista distancia
 				for(int j = 0; j < ajuda.length;j++){
+					//Converte String em Integer
 					int posicao = Integer.parseInt(ajuda[j]);
-					profundidade.add(posicao);
+					//adiciona na lista o valor ja convertido
+					vertices.add(posicao);
 				}
+				profundidade.add(vertices);
 			}
 		}
 		return profundidade;
