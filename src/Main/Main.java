@@ -30,8 +30,23 @@ public class Main {
 				for(int i = 0; i < resultado.size();i++){
 					grafo.buscaEmProfundidade(resultado.get(i));
 				}
+				//Limpa a lista
+				resultado.clear();
 				
-				//ler.lerProfundidade();
+				//Exibe Largura
+				resultado.addAll(ler.lerLargura());
+				for(int i = 0; i < resultado.size();i++){
+					grafo.buscaEmLargura(resultado.get(i));
+				}
+				//Limpa a lista
+				resultado.clear();
+				
+				//Exibe Menor Caminho
+				resultado.addAll(ler.lerMenorCaminho());
+				for(int i = 0; i < resultado.size();i++){
+					System.out.println("\n");
+					grafo.buscaMenorCaminho(resultado.get(i));
+				}
 			}	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

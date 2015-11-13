@@ -168,7 +168,7 @@ public class ManipulaArquivos {
 	}
 	
 	/**
-	 *Metodo que lê primeiro comando de DISTANCIA no arquivo de entrada 
+	 *Metodo que lê os comandos de DISTANCIA no arquivo de entrada 
 	 * @param List<List<Integer>>
 	 * 
 	 * */
@@ -206,6 +206,11 @@ public class ManipulaArquivos {
 		return distancia;
 	}
 	
+	/**
+	 *Metodo que lê os comandos de PROFUNDIDADE no arquivo de entrada 
+	 * @param List<List<Integer>>
+	 * 
+	 * */	
 	public List<List<Integer>> lerProfundidade(){
 		
 		//Lista de lista de valores inteiros que sao os vertices
@@ -236,5 +241,78 @@ public class ManipulaArquivos {
 			}
 		}
 		return profundidade;
+	}
+	/**
+	 *Metodo que lê os comandos de LARGURA no arquivo de entrada 
+	 * @param List<List<Integer>>
+	 * 
+	 * */
+	public List<List<Integer>> lerLargura(){
+		
+		//Lista de lista de valores inteiros que sao os vertices
+		List<List<Integer>> largura = new ArrayList<List<Integer>>();
+		
+		//For responsavel por ler as linhas do arquivo
+		for(int i = 0; i < linhasArquivo.length-1;i++){
+			//Pega linha por linha e adiciona na variavel
+			String linha = linhasArquivo[i];
+			String valores = linha.substring(0,3);
+			//Confere se o inicio da palavra começa com 'LAR' ou 'lar' de LARGURA
+			if(valores.equals("LAR") || valores.equals("lar")){
+				//Para cada comando de LARGURA instancia uma nova lista de vertices
+				List<Integer> vertices = new ArrayList<Integer>();
+				//Manipula a linha do arquivo pegando apenas os vertices
+				valores = linha.substring(8);
+				String[] ajuda = valores.split(";");
+				ajuda = ajuda[0].split(" ");
+			    
+				//For responsavel por converter String para Integer e depois insere na lista largura
+				for(int j = 0; j < ajuda.length;j++){
+					//Converte String em Integer
+					int posicao = Integer.parseInt(ajuda[j]);
+					//adiciona na lista o valor ja convertido
+					vertices.add(posicao);
+				}
+				largura.add(vertices);
+			}
+		}
+		return largura;
+	}
+	
+	/**
+	 *Metodo que lê os comandos de MENOR CAMINHO no arquivo de entrada 
+	 * @param List<List<Integer>>
+	 * 
+	 * */
+	public List<List<Integer>> lerMenorCaminho(){
+		
+		//Lista de lista de valores inteiros que sao os vertices
+		List<List<Integer>> caminho = new ArrayList<List<Integer>>();
+		
+		//For responsavel por ler as linhas do arquivo
+		for(int i = 0; i < linhasArquivo.length-1;i++){
+			//Pega linha por linha e adiciona na variavel
+			String linha = linhasArquivo[i];
+			String valores = linha.substring(0,3);
+			//Confere se o inicio da palavra começa com 'men' ou 'MEN' de MENOR CAMINHO
+			if(valores.equals("MEN") || valores.equals("men")){
+				//Para cada comando MENOR CAMINHO instancia uma nova lista de vertices
+				List<Integer> vertices = new ArrayList<Integer>();
+				//Manipula a linha do arquivo pegando apenas os vertices
+				valores = linha.substring(14);
+				String[] ajuda = valores.split(";");
+				ajuda = ajuda[0].split(" ");
+			    
+				//For responsavel por converter String para Integer e depois insere na lista largura
+				for(int j = 0; j < ajuda.length;j++){
+					//Converte String em Integer
+					int posicao = Integer.parseInt(ajuda[j]);
+					//adiciona na lista o valor ja convertido
+					vertices.add(posicao);
+				}
+				caminho.add(vertices);
+			}
+		}
+		return caminho;
 	}
 }
