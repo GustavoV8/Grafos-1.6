@@ -118,10 +118,7 @@ public class Grafo {
 			 fronteira.pop();
 		 }
 	 }
-	 
-	 
-	 
-	 
+	  
 	 public void buscaEmLargura(List<Integer> vertices1){
 		 
 		 //FILA FRONTEIRA;
@@ -142,8 +139,6 @@ public class Grafo {
 		 //EXIBE OS VERTICES DE ORIGEM E DESTINO;
 		 System.out.println("Largura: "+vertices1);
 		 System.out.println(origem);
-		 
-		 int cont = 0;
 		 
 		 //CONDICAO QUE COMPARA A VARIAVEL AUXILIAR (COM A ORIGEM) COM OS VIZINHOS; 
 		 while(aux != destino){
@@ -171,7 +166,6 @@ public class Grafo {
 				 }
 			 }
 			 
-			 
 			 for(int i = 0; i < vizinhos1.size(); i++){
 				 //FRONTEIRA RECEBE VIZINHOS DA ORIGEM ATUAL;
 				 fronteira.add(vizinhos1.get(i).intValue());
@@ -193,50 +187,11 @@ public class Grafo {
 				 }
 			 }
 			 //MOSTRA O RESULTADO DA BUSCA POR LARGURA;
-			  System.out.println(fronteira);
-			
-			 
-			  fronteira.remove();
-		
-				
-			 
-		
-		 }
-		 
-		 
+			  System.out.println(fronteira);	 
+			  fronteira.remove();	
+		 }	 
 	 }
-
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
+ 
 	public List<Vertices> getVertices() {
 		return vertices;
 	}

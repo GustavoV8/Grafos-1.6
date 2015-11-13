@@ -32,7 +32,7 @@ public class Main {
 				}
 				//Limpa a lista
 				resultado.clear();
-<<<<<<< HEAD
+
 				
 				//Exibe Largura
 				resultado.addAll(ler.lerLargura());
@@ -43,13 +43,11 @@ public class Main {
 				resultado.clear();
 				
 				//Exibe Menor Caminho
-				resultado.addAll(ler.lerMenorCaminho());
-				for(int i = 0; i < resultado.size();i++){
-					System.out.println("\n");
-					grafo.buscaMenorCaminho(resultado.get(i));
-				}
-=======
-				
+//				resultado.addAll(ler.lerMenorCaminho());
+//				for(int i = 0; i < resultado.size();i++){
+//					System.out.println("\n");
+//					grafo.buscaMenorCaminho(resultado.get(i));
+//				}
 				
 				//Exibe Largura
 				resultado.addAll(ler.lerLargura());
@@ -58,9 +56,6 @@ public class Main {
 				}
 				//Limpa a lista
 				resultado.clear();
-				
-				
->>>>>>> 03be260624d5cfff32551cf3ac1bf5b6deac8f1e
 			}	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
