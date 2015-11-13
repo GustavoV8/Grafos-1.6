@@ -32,6 +32,7 @@ public class Main {
 				}
 				//Limpa a lista
 				resultado.clear();
+<<<<<<< HEAD
 				
 				//Exibe Largura
 				resultado.addAll(ler.lerLargura());
@@ -47,6 +48,19 @@ public class Main {
 					System.out.println("\n");
 					grafo.buscaMenorCaminho(resultado.get(i));
 				}
+=======
+				
+				
+				//Exibe Largura
+				resultado.addAll(ler.lerLargura());
+				for(int i = 0; i < resultado.size();i++){
+					grafo.buscaEmLargura(resultado.get(i));
+				}
+				//Limpa a lista
+				resultado.clear();
+				
+				
+>>>>>>> 03be260624d5cfff32551cf3ac1bf5b6deac8f1e
 			}	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
