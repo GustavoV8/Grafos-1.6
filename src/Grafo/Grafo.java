@@ -63,7 +63,7 @@ public class Grafo {
 		 
 		 int cont = 0;
 		 
-		 //WHILE que ira comparar se a Variavel AUX eh igual ao destino caso nao continua a execução do while 
+		 //WHILE que ira comparar se a Variavel AUX eh igual ao destino caso nao continua a execuÃ§Ã£o do while 
 		 while(aux != destino){
 			 
 			 //Lista responsavel por pegar os vizinhos da origem
@@ -191,6 +191,98 @@ public class Grafo {
 			  fronteira.remove();	
 		 }	 
 	 }
+	 
+	 public List<Integer> buscarMenorCaminho(List<Integer> vertices){
+	        //Atributos usados na função encontrarMenorCaminho
+		    
+		    //Lista que guarda os vértices pertencentes ao menor caminho encontrado
+		    List<Integer> menorCaminho = new ArrayList<Integer>();
+		    
+		    //Variável que recebe os vértices pertencentes ao menor caminho
+		    Vertices verticeCaminho = new Vertices(0);
+		    
+		    //Variável que guarda o vértice que está sendo visitado 
+		    Vertices atual = new Vertices(0);
+		    
+		    //Variável que marca o vizinho do vértice atualmente visitado 
+		    Vertices vizinho = new Vertices(0);
+		    
+		    //Corte de vértices que já tiveram suas distâncias marcadas e cujos vizinhos não foram visitados
+		    List<Integer> fronteira = new ArrayList<Integer>();
+		    
+		    //Guarda o número de vértices não visitados
+		    int verticesNaoVisitados = this.vertices.size();
+		    
+		    atual.setId(vertices.get(0));
+		    
+		    fronteira.add(atual.getId());
+		    
+		    menorCaminho.add(atual.getId());
+		    
+            //Colocando a distancias iniciais
+            for (int i=0;i< this.vertices.size();i++){                  
+            	//Nó atual tem distância zero, e todos os outros, 9999(infinita)
+            	if (this.vertices.get(i).getId() == atual.getId()){
+            		this.vertices.get(i).setDistancia(0);
+            	}else{
+            		this.vertices.get(i).setDistancia(999);
+            	}
+            }
+            
+            //O algoritmo continua até que todos os vértices sejam visitados
+            while(verticesNaoVisitados != 0){
+            	//Toma-se sempre o vértice com menor distância, que é o primeiro da lista do corte
+            	atual.setId(fronteira.get(0));
+            	
+            	 /* Para cada vizinho (cada aresta), calcula-se a sua possível distância,
+                	somando a distância do vértice atual com a da aresta correspondente.
+                	Se essa distância for menor que a distância do vizinho, esta é atualizada.
+                 */
+            	for(int i = 0; i < this.arestas.size(); i++){
+            		System.out.println("ARESTAS: "+i);
+            		for(int j = 0; j < this.vertices.size(); j++){
+            			System.out.println("VERTICES: "+j);
+            			vizinho.setId(this.arestas.get(i).getDestino().getId());
+            				if(!vizinho.verificarVisita()){
+            					vizinho.setPai(atual);
+            			
+            					//Comparando a distância do vizinho com a possível distância
+            					System.out.println("Distancia: "+this.vertices.get(j).getDistancia()+" < ("+atual.getDistancia()+" + "+this.arestas.get(i).getPesos()+")");
+            					if(this.vertices.get(j).getDistancia() < (atual.getDistancia() + this.arestas.get(i).getPesos())){
+            							this.vertices.get(j).setDistancia(atual.getDistancia() + this.arestas.get(i).getPesos());
+            							System.out.println("Nova Distancia: "+this.vertices.get(j).getDistancia());
+            							/*	Se o vizinho é o vértice procurado, e foi feita uma mudança na distância,
+            							 * 	a lista com o menor caminho anterior é apagada, pois existe um caminho menor ainda.
+            							 * 	Cria-se a nova lista do menor caminho, com os vértices pais, até o vértice origem.
+            							 */
+            							if(vizinho.getId() == vertices.get(1).intValue()){
+            								menorCaminho.clear();
+            								verticeCaminho = vizinho;
+            								menorCaminho.add(vizinho.getId());
+            								while(verticeCaminho.getPai() != null){
+            									menorCaminho.add(verticeCaminho.getPai().getId());
+            									verticeCaminho = verticeCaminho.getPai();
+            								}
+            								Collections.sort(menorCaminho);
+            								System.out.println("Menor Caminho: "+menorCaminho);
+            							}
+            					}
+            					fronteira.add(atual.getId());
+            				}
+            		}
+            	}
+                //Marca o vértice atual como visitado e o retira do corte
+                atual.visitar();
+                verticesNaoVisitados--;
+                fronteira.remove(atual);
+                /*Ordena a lista do corte, para que o vértice com menor distância fique na primeira
+                 * posição*/
+                
+                Collections.sort(fronteira);
+            }
+		 
+		 return menorCaminho;
+	 }
  
 	public List<Vertices> getVertices() {
 		return vertices;
@@ -215,5 +307,5 @@ public class Grafo {
 	}
 	public void setPesos(boolean pesos) {
 		this.pesos = pesos;
-	}	
+	}
 }

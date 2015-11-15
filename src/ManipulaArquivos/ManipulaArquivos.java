@@ -1,8 +1,10 @@
 package ManipulaArquivos;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ public class ManipulaArquivos {
 	private String[] linhasArquivo;	
 	//Variavel que pega o total de linhas
 	private LineNumberReader linhaLeitura;
+	//Varialve responsavel por escrever no arquivo de saida
+	private String saida;
 	
 	/**
 	 * Metodo que faz a leitura do arquivo e faz as validacoes iniciais
@@ -54,12 +58,24 @@ public class ManipulaArquivos {
 		return true;
 	}
 	
+	//Funcao responsavel por escrever no arquivo de saida
+	public void imprimeArquivo(String nomeArquivoSaida) throws IOException{
+		FileWriter fw = new FileWriter(nomeArquivoSaida);
+		BufferedWriter bw = new BufferedWriter(fw);
+		String palavra;
+		while((palavra = this.saida) != null){
+			bw.write(palavra);
+		}	
+		bw.close();
+		fw.close();
+	}
+	
 	/**
 	 * Metodo que faz a leitura dos vertices
 	 * @param <Vertives>
 	 * */
 	public List<Vertices> lerVertices(){
-		//faz a manipulação da linha do vertice tirando o (;) do final;
+		//faz a manipulaÃ§Ã£o da linha do vertice tirando o (;) do final;
 		String linha = new String(linhasArquivo[0]);
 		linha = linha.replace(";", "");
 		String[] vertices = new String[linha.length()-3];
@@ -84,11 +100,11 @@ public class ManipulaArquivos {
 	}
 	
 	/**
-	 * Metodo que ler se o grafo é ou nao direcionado
+	 * Metodo que ler se o grafo Ã© ou nao direcionado
 	 * 
 	 * */
 	public boolean lerDirecionada(){
-		//faz a manipulação da linha do vertice tirando o (;) do final;
+		//faz a manipulaÃ§Ã£o da linha do vertice tirando o (;) do final;
 		String linha = new String(linhasArquivo[1]);
 		linha = linha.replace(";", "");
 		//Converte a String para boolean
@@ -101,7 +117,7 @@ public class ManipulaArquivos {
 	 * 
 	 * */
 	public boolean lerPesos(){
-		//faz a manipulação da linha do vertice tirando o (;) do final;
+		//faz a manipulaÃ§Ã£o da linha do vertice tirando o (;) do final;
 		String linha = new String(linhasArquivo[2]);
 		linha = linha.replace(";", "");
 		//Converte a String para boolean
@@ -125,7 +141,7 @@ public class ManipulaArquivos {
 		//While responsavel por ler as linhas referentes as arestas ate encontrar o primeiro comando de busca
 		while(linhasArquivo[posicao].charAt(0) != 'D'){
 			
-			//Faz a manipulação das linhas para retirar do final o (;)
+			//Faz a manipulaÃ§Ã£o das linhas para retirar do final o (;)
 			String linha = new String(linhasArquivo[posicao]);
 			linha = linha.replace(",", "");
 			String[] aresta = new String[linha.length()];
@@ -168,7 +184,7 @@ public class ManipulaArquivos {
 	}
 	
 	/**
-	 *Metodo que lê os comandos de DISTANCIA no arquivo de entrada 
+	 *Metodo que lÃª os comandos de DISTANCIA no arquivo de entrada 
 	 * @param List<List<Integer>>
 	 * 
 	 * */
@@ -184,7 +200,7 @@ public class ManipulaArquivos {
 			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0, 3);
-			//Confere se o inicio da palavra começa com 'DIS' ou 'dis' de DISTANCIA
+			//Confere se o inicio da palavra comeÃ§a com 'DIS' ou 'dis' de DISTANCIA
 			if(valores.equals("DIS") || valores.equals("dis")){
 				//Para cada comando de DISTANCIA instancia uma nova lista de vertices
 				List<Integer> vertices = new ArrayList<Integer>();
@@ -207,7 +223,7 @@ public class ManipulaArquivos {
 	}
 	
 	/**
-	 *Metodo que lê os comandos de PROFUNDIDADE no arquivo de entrada 
+	 *Metodo que lÃª os comandos de PROFUNDIDADE no arquivo de entrada 
 	 * @param List<List<Integer>>
 	 * 
 	 * */	
@@ -221,7 +237,7 @@ public class ManipulaArquivos {
 			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0,3);
-			//Confere se o inicio da palavra começa com 'PRO' ou 'pro' de PROFUNDIDADE
+			//Confere se o inicio da palavra comeÃ§a com 'PRO' ou 'pro' de PROFUNDIDADE
 			if(valores.equals("PRO") || valores.equals("pro")){
 				//Para cada comando de PROFUNDIDADE instancia uma nova lista de vertices
 				List<Integer> vertices = new ArrayList<Integer>();
@@ -243,7 +259,7 @@ public class ManipulaArquivos {
 		return profundidade;
 	}
 	/**
-	 *Metodo que lê os comandos de LARGURA no arquivo de entrada 
+	 *Metodo que lÃª os comandos de LARGURA no arquivo de entrada 
 	 * @param List<List<Integer>>
 	 * 
 	 * */
@@ -257,7 +273,7 @@ public class ManipulaArquivos {
 			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0,3);
-			//Confere se o inicio da palavra começa com 'LAR' ou 'lar' de LARGURA
+			//Confere se o inicio da palavra comeÃ§a com 'LAR' ou 'lar' de LARGURA
 			if(valores.equals("LAR") || valores.equals("lar")){
 				//Para cada comando de LARGURA instancia uma nova lista de vertices
 				List<Integer> vertices = new ArrayList<Integer>();
@@ -280,7 +296,7 @@ public class ManipulaArquivos {
 	}
 	
 	/**
-	 *Metodo que lê os comandos de MENOR CAMINHO no arquivo de entrada 
+	 *Metodo que lÃª os comandos de MENOR CAMINHO no arquivo de entrada 
 	 * @param List<List<Integer>>
 	 * 
 	 * */
@@ -294,7 +310,7 @@ public class ManipulaArquivos {
 			//Pega linha por linha e adiciona na variavel
 			String linha = linhasArquivo[i];
 			String valores = linha.substring(0,3);
-			//Confere se o inicio da palavra começa com 'men' ou 'MEN' de MENOR CAMINHO
+			//Confere se o inicio da palavra comeÃ§a com 'men' ou 'MEN' de MENOR CAMINHO
 			if(valores.equals("MEN") || valores.equals("men")){
 				//Para cada comando MENOR CAMINHO instancia uma nova lista de vertices
 				List<Integer> vertices = new ArrayList<Integer>();

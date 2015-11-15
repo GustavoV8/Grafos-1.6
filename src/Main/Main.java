@@ -46,16 +46,10 @@ public class Main {
 //				resultado.addAll(ler.lerMenorCaminho());
 //				for(int i = 0; i < resultado.size();i++){
 //					System.out.println("\n");
-//					grafo.buscaMenorCaminho(resultado.get(i));
+//					grafo.buscarMenorCaminho(resultado.get(i));
 //				}
-				
-				//Exibe Largura
-				resultado.addAll(ler.lerLargura());
-				for(int i = 0; i < resultado.size();i++){
-					grafo.buscaEmLargura(resultado.get(i));
-				}
-				//Limpa a lista
-				resultado.clear();
+//				//Limpa a lista
+//				resultado.clear();
 			}	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
