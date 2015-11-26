@@ -12,9 +12,12 @@ Esta é uma biblioteca feita em Java para se utilizar em problemas de grafos.
 ## Uso
 
 Biblioteca feita com o objetivo de representar e resolver problemas baseados em grafos. Com a bibioteca, é possível: 
-- Busca em Largura e Profundidade
-- Medir distâncias
-- Descobrir menores caminhos
+
+> - Busca em Largura e Profundidade
+> - Medir distâncias
+> - Descobrir menores caminhos
+
+#### Algumas Observações:
 
 > - Para utilizar a biblioteca, importe a biblioteca em seu projeto e em seguida, levante um servidor local na porta 8080, preferencialmente o Toncat 8.0 >
 
