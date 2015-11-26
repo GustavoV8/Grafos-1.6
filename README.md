@@ -3,16 +3,16 @@
 Esta é uma biblioteca feita em Java para se utilizar em problemas de grafos.
 
 ## Integrantes
-- Gustavo Henrique
-- Raphael Petrick
-- Priscila Pereira
-- Yan Magalhães
-- Welvis Moreira
+> - Gustavo Henrique
+> - Raphael Petrick
+> - Priscila Pereira
+> - Yan Magalhães
+> - Welvis Moreira
 
 ## Uso
 
 Biblioteca feita com o objetivo de representar e resolver problemas baseados em grafos. Com a bibioteca, é possível: 
-- Buscs em Largura e Profundidade
+- Busca em Largura e Profundidade
 - Medir distâncias
 - Descobrir menores caminhos
 
@@ -24,9 +24,9 @@ Biblioteca feita com o objetivo de representar e resolver problemas baseados em 
 
 ## Tecnologias Utilizadas
 
-Maven: Automatidor e gerenciador de dependencias do Java
-Git: Tecnologia para versionamento de código
-D3 JS: Biblioteca Grática para exibir um modelo do Grafo através da Web
+> - Maven: Automatidor e gerenciador de dependencias do Java
+> - Git: Tecnologia para versionamento de código
+> - D3 JS: Biblioteca Grática para exibir um modelo do Grafo através da Web
 
 ## Como contribuir com o projeto
 
