@@ -33,4 +33,10 @@ Biblioteca feita com o objetivo de representar e resolver problemas baseados em 
 
 ## Como contribuir com o projeto
 
+Para contribuir com o projeto, [abra uma issue](https://github.com/TeoriaDeGrafos/Biblioteca-Grafos/issues) com sua sugestão para nova funcionalidade, ou reportando bugs, e se prefererir, envie um [pull request](https://github.com/TeoriaDeGrafos/Biblioteca-Grafos/pulls).
+
+
+
+
+
 > Se você tem algumas dúvidas sobre os comandos Git, acesse o arquivo[GIT.md](GIT.md).
